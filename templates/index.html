@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Pi Video Surveillance</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function(){
+        var socket = io();
+        socket.on('get_count', function(msg) {
+          console.log('<p>Received: ' + msg.data + '</p>');
+          var targetContainer = document.getElementById("target_div");
+          targetContainer.innerHTML = msg.data;
+        });
+
+        socket.emit('my_event', {data: ""});
+      });
+    </script>
+
+  </head>
+
+  <body>
+    <h1>Pi Video Surveillance</h1>
+    <center> <img src="{{ url_for('video_feed') }}" width="600px" height="600px"> </center>
+    <div id="target_div">Watch this space...</div>  
+  </body>
+</html>
