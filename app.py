@@ -22,7 +22,7 @@ outputFrame = None
 app = Flask(__name__)
 
 net = cv2.dnn.readNetFromCaffe(PROTOTXT, MODEL)
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(cv2.CAP_V4L2)
 
 time.sleep(2.0)
 
@@ -97,4 +97,3 @@ if __name__ == '__main__':
     # start the flask app
     # app.run(host="127.0.0.1", port=8000, debug=True, threaded=True, use_reloader=False)
     app.run(debug=True)
-    
