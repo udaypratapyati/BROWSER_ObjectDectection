@@ -95,4 +95,5 @@ if __name__ == '__main__':
     t.start()
 
     # start the flask app
-    app.run(host="127.0.0.1", port=8000, debug=True, threaded=True, use_reloader=False)
+    # app.run(host="127.0.0.1", port=8000, debug=True, threaded=True, use_reloader=False)
+    app.run(debug=True)
